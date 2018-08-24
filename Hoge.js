@@ -12,9 +12,8 @@ export default class Hoge extends Component {
     this.updateText(this.props.isShow)
   }
   updateText(isShow) {
-    if (!isShow) {
-      this.setState({text:"非表示です"})
-    }
+    const text = getText(isShow)
+    this.setState({text})
   }
   render() {
     return (
@@ -24,4 +23,6 @@ export default class Hoge extends Component {
     )
   }
 }
+
+const getText = (isShow) => isShow ? "こんにちは":"非表示です"
 
