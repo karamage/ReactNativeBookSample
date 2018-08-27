@@ -21,10 +21,13 @@ type Props = {};
 import Hoge from './Hoge'
 
 export default class App extends Component<Props> {
+  callback(text) {
+    alert(`コールバックされました text=${text}`)
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Hoge isShow={false} />
+        <Hoge isShow={false} callback={this.callback} />
       </View>
       /*
       <View style={styles.container}>

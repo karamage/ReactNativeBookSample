@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text,View} from 'react-native';
+import {Text,View,Button} from 'react-native';
 
 export default class Hoge extends Component {
   constructor(props) {
@@ -7,6 +7,7 @@ export default class Hoge extends Component {
     this.state = {
       text: "こんにちは"
     }
+    this.onPressButton = this.onPressButton.bind(this)
   }
   componentDidMount() {
     this.updateText(this.props.isShow)
@@ -15,10 +16,16 @@ export default class Hoge extends Component {
     const text = getText(isShow)
     this.setState({text})
   }
+  onPressButton() {
+    const text = "ボタンを押したよ"
+    this.setState({text})
+    this.props.callback(text)
+  }
   render() {
     return (
       <View>
         <Text>{this.state.text}</Text>
+        <Button title="おして" onPress={this.onPressButton} />
       </View>
     )
   }
