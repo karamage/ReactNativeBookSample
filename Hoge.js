@@ -10,6 +10,35 @@ export default class Hoge extends Component {
     this.onPressButton = this.onPressButton.bind(this)
   }
   componentDidMount() {
+    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+    const promise = async () => {
+      await sleep(2000);
+      return 'resolve OK'
+    }
+
+    const awaitFunc = async () => {
+      const result = await promise()
+      console.log(result)
+    }
+
+    awaitFunc()
+
+    /*
+    const promise = new Promise((resolve, reject) => {
+      window.setTimeout(() => {
+        resolve('resolve OK');
+      }, 2000);
+    });
+
+    promise
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      */
+
     this.updateText(this.props.isShow)
   }
   updateText(isShow) {
