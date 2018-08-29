@@ -27,8 +27,20 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
+        <Hoge/>
+      </View>
+      /*
+      <View style={{flex: 1, flexDirection:"row"}}>
+        <View style={{flex: 1, backgroundColor: 'red'}} />
+        <View style={{flex: 2, backgroundColor: 'blue'}} />
+        <View style={{flex: 3, backgroundColor: 'green'}} />
+      </View>
+      */
+      /*
+      <View style={styles.container}>
         <Hoge isShow={false} callback={this.callback} />
       </View>
+      */
       /*
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>

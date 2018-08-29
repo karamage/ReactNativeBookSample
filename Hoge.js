@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Text,View,Button} from 'react-native';
 
+const Hoge = () => (
+  <View><Text>Hoge</Text></View>
+)
+export default Hoge
+/*
 export default class Hoge extends Component {
   constructor(props) {
     super(props)
@@ -23,21 +28,19 @@ export default class Hoge extends Component {
 
     awaitFunc()
 
-    /*
-    const promise = new Promise((resolve, reject) => {
-      window.setTimeout(() => {
-        resolve('resolve OK');
-      }, 2000);
-    });
-
-    promise
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      */
+    // const promise = new Promise((resolve, reject) => {
+    //   window.setTimeout(() => {
+    //     resolve('resolve OK');
+    //   }, 2000);
+    // });
+    //
+    // promise
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
 
     this.updateText(this.props.isShow)
   }
@@ -59,6 +62,7 @@ export default class Hoge extends Component {
     )
   }
 }
+*/
 
 const getText = (isShow) => isShow ? "こんにちは":"非表示です"
 
