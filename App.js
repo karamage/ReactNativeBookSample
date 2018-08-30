@@ -19,35 +19,17 @@ const instructions = Platform.select({
 type Props = {};
 
 import Hoge from './Hoge'
+import TodoListScreen from './TodoListScreen'
 
 export default class App extends Component<Props> {
+  /*
   callback(text) {
     alert(`コールバックされました text=${text}`)
   }
+  */
   render() {
     return (
-      <View style={styles.container}>
-        <Hoge/>
-      </View>
-      /*
-      <View style={{flex: 1, flexDirection:"row"}}>
-        <View style={{flex: 1, backgroundColor: 'red'}} />
-        <View style={{flex: 2, backgroundColor: 'blue'}} />
-        <View style={{flex: 3, backgroundColor: 'green'}} />
-      </View>
-      */
-      /*
-      <View style={styles.container}>
-        <Hoge isShow={false} callback={this.callback} />
-      </View>
-      */
-      /*
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-      */
+      <TodoListScreen/>
     );
   }
 }
