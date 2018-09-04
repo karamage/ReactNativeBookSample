@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet,Text,View,FlatList} from 'react-native';
+import {Button,StyleSheet,Text,View,FlatList} from 'react-native';
 
 export default class TodoListScreen extends Component {
   constructor(props) {
@@ -29,6 +29,9 @@ export default class TodoListScreen extends Component {
       ]
     }
   }
+  tapAddButton() {
+    this.props.navigation.navigate('AddTodo', {callBack: null})
+  }
   render() {
     const {todoList} = this.state
     return (
@@ -44,6 +47,7 @@ export default class TodoListScreen extends Component {
             )
           }}
         />
+        <Button title="追加" onPress={()=>this.tapAddButton()}/>
       </View>
     )
   }

@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation'
 import TodoListScreen from './TodoListScreen'
+import AddTodoScreen from './AddTodoScreen'
 type Props = {};
 
 export default class App extends Component<Props> {
@@ -21,6 +22,7 @@ export default class App extends Component<Props> {
 
 const TodoNavigator = StackNavigator({
   TodoList: { screen: TodoListScreen },
+  AddTodo: { screen: AddTodoScreen },
 }, {
   initialRouteName: 'TodoList',
 });
