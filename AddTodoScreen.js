@@ -1,19 +1,28 @@
 import React, {Component} from 'react';
-import {StyleSheet,Text,View,FlatList} from 'react-native';
+import {TextInput,Button,StyleSheet,Text,View} from 'react-native';
 
 export default class TodoListScreen extends Component {
   constructor(props) {
     super(props)
+    const {key, callback} = props
     this.state = {
+      key,
+      callback,
       title: "",
       memo: "",
     }
   }
   render() {
-    const {todoList} = this.state
+    const {key,callback,title,memo} = this.state
+    let item = {}
     return (
       <View style={styles.container}>
         <Text>追加画面</Text>
+        <Text>タイトル</Text>
+        <TextInput/>
+        <Text>メモ</Text>
+        <TextInput/>
+        <Button title="追加する" onPress={()=>callback(item)}/>
       </View>
     )
   }
@@ -22,14 +31,6 @@ export default class TodoListScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
     backgroundColor: '#F5F5F5',
   },
-  itemCell: {
-    flex: 1,
-    width:'100%',
-    padding: 20,
-    margin: 2,
-    backgroundColor: '#FFFFFF',
-  }
 })

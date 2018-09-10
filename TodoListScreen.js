@@ -5,6 +5,7 @@ export default class TodoListScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      lastKey: 4,
       todoList: [
         {
           key: '1',
@@ -28,9 +29,15 @@ export default class TodoListScreen extends Component {
         },
       ]
     }
+    this.addItem = this.addItem.bind(this)
   }
   tapAddButton() {
-    this.props.navigation.navigate('AddTodo', {callBack: null})
+    const key = this.state.lastKey + 1
+    this.setState({lastkey:key})
+    this.props.navigation.navigate('AddTodo', {callback:this.addItem, key:`${key}`})
+  }
+  addItem(item) {
+    console.log('addItem')
   }
   render() {
     const {todoList} = this.state
