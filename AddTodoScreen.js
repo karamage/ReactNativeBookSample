@@ -4,7 +4,7 @@ import {TextInput,Button,StyleSheet,Text,View} from 'react-native';
 export default class TodoListScreen extends Component {
   constructor(props) {
     super(props)
-    const {key, callback} = props
+    const {key, callback} = props.navigation.state.params
     this.state = {
       key,
       callback,
@@ -14,15 +14,26 @@ export default class TodoListScreen extends Component {
   }
   render() {
     const {key,callback,title,memo} = this.state
-    let item = {}
+    let item = {key,title,memo}
     return (
       <View style={styles.container}>
         <Text>追加画面</Text>
         <Text>タイトル</Text>
-        <TextInput/>
+        <TextInput
+          style={{borderColor: 'gray', borderBottomWidth: 1}}
+          onChangeText={(title) => this.setState({title})}
+          value={this.state.title}
+        />
         <Text>メモ</Text>
-        <TextInput/>
-        <Button title="追加する" onPress={()=>callback(item)}/>
+        <TextInput
+          style={{borderColor: 'gray', borderBottomWidth: 1}}
+          onChangeText={(memo) => this.setState({memo})}
+          value={this.state.memo}
+        />
+        <Button title="追加する" onPress={()=> {
+          callback(item)
+          this.props.navigation.goBack()
+        }}/>
       </View>
     )
   }
