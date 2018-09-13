@@ -17,19 +17,20 @@ export default class TodoListScreen extends Component {
     let item = {key,title,memo}
     return (
       <View style={styles.container}>
-        <Text>追加画面</Text>
-        <Text>タイトル</Text>
-        <TextInput
-          style={{borderColor: 'gray', borderBottomWidth: 1}}
-          onChangeText={(title) => this.setState({title})}
-          value={this.state.title}
-        />
-        <Text>メモ</Text>
-        <TextInput
-          style={{borderColor: 'gray', borderBottomWidth: 1}}
-          onChangeText={(memo) => this.setState({memo})}
-          value={this.state.memo}
-        />
+        <View style={styles.form}>
+          <Text>タイトル</Text>
+          <TextInput
+            style={{borderColor: 'gray', borderBottomWidth: 1}}
+            onChangeText={(title) => this.setState({title})}
+            value={this.state.title}
+          />
+          <Text>メモ</Text>
+          <TextInput
+            style={{borderColor: 'gray', borderBottomWidth: 1}}
+            onChangeText={(memo) => this.setState({memo})}
+            value={this.state.memo}
+          />
+        </View>
         <Button title="追加する" onPress={()=> {
           callback(item)
           this.props.navigation.goBack()
@@ -42,6 +43,9 @@ export default class TodoListScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+  },
+  form: {
+    flex: 1,
+    margin:20,
   },
 })
