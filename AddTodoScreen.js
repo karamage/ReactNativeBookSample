@@ -12,6 +12,16 @@ export default class TodoListScreen extends Component {
       memo: "",
     }
   }
+  //RN56で日本語入力ができない問題の対応
+  shouldComponentUpdate(nextProps,nextState){
+    if(this.state.title !== nextState.title){
+      return false;
+    }
+    if(this.state.memo !== nextState.memo){
+      return false;
+    }
+    return true;
+  }
   render() {
     const {key,callback,title,memo} = this.state
     let item = {key,title,memo}
