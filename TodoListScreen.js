@@ -37,9 +37,10 @@ export default class TodoListScreen extends Component {
     this.props.navigation.navigate('AddTodo', {callback:this.addItem, key:`${key}`})
   }
   addItem(item) {
+    console.log(`addItem item.key=${item.key} title=${item.title}`)
     let {todoList} = this.state
     todoList.push(item)
-    this.setState({todoList})
+    this.setState({todoList:todoList.map((item)=>item)})
   }
   render() {
     const {todoList} = this.state
