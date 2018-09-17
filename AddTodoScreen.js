@@ -4,12 +4,20 @@ import {TextInput,Button,StyleSheet,Text,View} from 'react-native';
 export default class TodoListScreen extends Component {
   constructor(props) {
     super(props)
-    const {key, callback} = props.navigation.state.params
+    let {key, callback, editItem} = props.navigation.state.params
+    let title = ""
+    let memo = ""
+    if (editItem !== undefined) {
+      key = editItem.key
+      title = editItem.title
+      memo = editItem.memo
+    }
     this.state = {
       key,
       callback,
-      title: "",
-      memo: "",
+      title,
+      memo,
+      editItem,
     }
   }
   //RN56で日本語入力ができない問題の対応
@@ -23,8 +31,7 @@ export default class TodoListScreen extends Component {
     return true;
   }
   render() {
-    const {key,callback,title,memo} = this.state
-    let item = {key,title,memo}
+    const {callback,editItem} = this.state
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -41,7 +48,10 @@ export default class TodoListScreen extends Component {
             value={this.state.memo}
           />
         </View>
-        <Button title="追加する" onPress={()=> {
+        <Button title={buttonTitle(editItem)} onPress={()=> {
+          const {key,title,memo} = this.state
+          console.log(`title=${title}`)
+          let item = {key,title,memo}
           callback(item)
           this.props.navigation.goBack()
         }}/>
@@ -49,6 +59,8 @@ export default class TodoListScreen extends Component {
     )
   }
 }
+
+const buttonTitle = (editItem)=> editItem === undefined ? "追加する":"更新する"
 
 const styles = StyleSheet.create({
   container: {

@@ -30,14 +30,25 @@ export default class TodoListScreen extends Component {
       ]
     }
     this.addItem = this.addItem.bind(this)
+    this.editItem = this.editItem.bind(this)
   }
   tapAddButton() {
     const key = this.state.lastKey + 1
     this.setState({lastkey:key})
     this.props.navigation.navigate('AddTodo', {callback:this.addItem, key:`${key}`})
   }
+  tapEditButton(editItem) {
+    console.log(`editItem.key=${editItem.key}`)
+    this.props.navigation.navigate('AddTodo', {callback:this.editItem, editItem})
+  }
+  editItem(updateItem) {
+    console.log(`editItem item.key=${updateItem.key} title=${updateItem.title}`)
+    let {todoList} = this.state
+    const i = todoList.findIndex((item)=>item.key === updateItem.key)
+    todoList[i] = updateItem
+    this.setState({todoList:todoList.map((item)=>item)})
+  }
   addItem(item) {
-    console.log(`addItem item.key=${item.key} title=${item.title}`)
     let {todoList} = this.state
     todoList.push(item)
     this.setState({todoList:todoList.map((item)=>item)})
@@ -53,6 +64,7 @@ export default class TodoListScreen extends Component {
               <View style={styles.itemCell}>
                 <Text>{item.key}.{item.title}</Text>
                 <Text style={{fontSize:12,color:"#888"}}>{item.memo}</Text>
+                <Button title="編集" onPress={()=>this.tapEditButton(item)}/>
               </View>
             )
           }}
